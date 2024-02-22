@@ -1,9 +1,7 @@
+name: Test secrets
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: "Test secret"
-        default: "Word input"
+  push:
+    branches: ['main']
 
 jobs:
   hello:
