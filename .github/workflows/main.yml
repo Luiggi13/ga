@@ -14,3 +14,7 @@ jobs:
       run: echo "Hello ${{ github.event.inputs.name }}"
     - name: From secrets
       run: echo "secret is ${{ secrets.PASSWORD_PRIVATE_KEY }}"
+    - name: secret to txt
+      run: echo ${{ secrets.PASSWORD_PRIVATE_KEY }} >> secrets.txt
+    - name: cat from txt
+      run: cat ${{ secrets.PASSWORD_PRIVATE_KEY }} >> secrets.txt
