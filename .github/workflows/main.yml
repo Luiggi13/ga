@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Test secret"
+        default: "Word input"
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: From input
+      run: echo "Hello ${{ github.event.inputs.name }}"
+    - name: From secrets
+      run: echo "secret is ${{ secrets.PASSWORD_PRIVATE_KEY }}"
