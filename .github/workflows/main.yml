@@ -13,8 +13,9 @@ jobs:
     - name: From input
       run: echo "Hello ${{ github.event.inputs.name }}"
     - name: From secrets
-      run: echo "secret is ${{ secrets.PASSWORD_PRIVATE_KEY }}"
-    - name: secret to txt
-      run: echo ${{ secrets.PASSWORD_PRIVATE_KEY }} >> secrets.txt
-    - name: cat from txt
-      run: cat ${{ secrets.PASSWORD_PRIVATE_KEY }} >> secrets.txt
+      env:
+        DEBUG_PASSWORD: ${{ secrets.PASSWORD_PRIVATE_KEY }}
+      run: |
+        echo $DEBUG_PASSWORD >> secrets.txt
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
