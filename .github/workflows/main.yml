@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    uses: https://github.com/Luiggi13/ga/blob/develop/.github/workflows/main.yml@develop
+    uses: ./.github/workflows/main.yml@develop
     with:
       environment: ${GITHUB_REF#refs/heads/}
   deploy:
