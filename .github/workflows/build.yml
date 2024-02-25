@@ -1,0 +1,30 @@
+name: 🚀 Build project 🚀
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+
+      - name: 📥 Install Dependencies
+        run: npm install
+
+      - name: 📥 Set up .env
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+          echo "${{ secrets.SECRET_JWT }}" >> .env
+          echo "BRANCH=${{ inputs.environment }}" >> .env
+
+      - name: 🚀 Build project
+        run: npm run build
