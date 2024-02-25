@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    uses: Luiggi13/ga/.github/workflows/build.yaml@develop
+    uses: Luiggi13/ga/.github/workflows/main.yml@develop
     with:
       environment: ${GITHUB_REF#refs/heads/}
   deploy:
@@ -54,7 +54,7 @@ jobs:
               echo "la variable tendrá el valor de $APP_ID"
               ;;
             *)
-              echo "no estás en las ramas principales main,qa,development"
+              echo "no estás en las ramas principales main,qa,develop"
               ;;
           esac
 
